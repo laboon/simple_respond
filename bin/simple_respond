@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+
+system "ruby ./lib/simple_respond.rb #{ARGV[0]} #{ARGV[1]}"
