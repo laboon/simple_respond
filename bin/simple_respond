@@ -2,23 +2,17 @@
 
 require 'sinatra'
 
-port = ARGV[0]
-port ||= 80
-
-response_file = ARGV[1]
-response_file ||= 'response.json'
-
-class SimpleRespond < Sinatra::Base
-
-  set :port, port
-
-  get '*' do
-    content_type :json
-    puts "Responding with #{response_file}"
-    File.read(response_file)
-  end
-
+if ARGV.length != 2 then
+  puts 'USAGE: simple_respond <port> <JSON file>'
+  Kernel.exit(1)
 end
 
-puts "Responding with #{response_file} on port #{port}"
-SimpleRespond.run!
+set :port, ARGV[0]
+
+get '*' do
+  content_type :json
+  response = ARGV[1]
+  response ||= 'response.json'
+  puts "Responding with #{response}"
+  File.read(response)
+end
