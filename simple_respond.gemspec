@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "simple_respond"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
   s.date        = '2015-02-13'
   s.executables << 'simple_respond'
   s.summary     = "A simple web service JSON responder"
