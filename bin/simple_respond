@@ -1,18 +1,16 @@
 #!/usr/bin/env ruby
 
-require 'sinatra'
-
 if ARGV.length != 2 then
   puts 'USAGE: simple_respond <port> <JSON file>'
   Kernel.exit(1)
 end
 
-set :port, ARGV[0]
+$response_file = ARGV[1]
+$response_file ||= 'response.json'
+$response = File.read($response_file)
 
-get '*' do
-  content_type :json
-  response = ARGV[1]
-  response ||= 'response.json'
-  puts "Responding with #{response}"
-  File.read(response)
+me_dir = File.expand_path(File.dirname(__FILE__))
+
+Dir.chdir (me_dir) do
+  require '../application/app.rb'
 end
