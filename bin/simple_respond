@@ -12,5 +12,6 @@ $response = File.read($response_file)
 me_dir = File.expand_path(File.dirname(__FILE__))
 
 Dir.chdir (me_dir) do
-  require '../application/app.rb'
+  require '../application/simple_respond.rb'
+  SimpleRespond.run!
 end
